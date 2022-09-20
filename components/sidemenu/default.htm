@@ -1,0 +1,34 @@
+    {% if parentNode and parentNode.getChildCount %}
+    <div class="special-section">
+        <div class="special-section__title">
+            <b>{{ parentNode.title }}</b>
+        </div>
+        <ul>
+            {% for primaryNav in parentNode.getChildren %}
+                {% if primaryNav.enabled %}
+                    {% if primaryNav.getChildCount and numberOfLevels > 1 %}
+                        <li>
+                            <a href="{{ primaryNav.getLinkHref }}" target="{{ primaryNav.getLinkTarget }}">{{ primaryNav.title }}</a>
+                    {% else %}
+                        <li>
+                            <a href="{{ primaryNav.getLinkHref }}" target="{{ primaryNav.getLinkTarget }}">{{ primaryNav.title }}</a>
+                    {% endif %}
+                    {% if primaryNav.getChildCount and numberOfLevels > 1 %}
+                        <ul>
+                            {% for secondaryNav in primaryNav.getChildren %}
+                                {% if secondaryNav.enabled %}
+                                    <li>
+                                        <a href="{{ secondaryNav.getLinkHref }}" target="{{ secondaryNav.getLinkTarget }}">{{ secondaryNav.title }}</a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                        </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+

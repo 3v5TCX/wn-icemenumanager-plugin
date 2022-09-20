@@ -1,0 +1,57 @@
+<div id="sitemap" class="site-map__content mfp-with-anim mfp-hide">
+    <h2>Карта сайта</h2>
+    {% if parentNode and parentNode.getChildCount %}
+    <div class="site-map">
+        <ul class="site-map__list">
+            {% set index = 0 %}
+            {% for primaryNav in parentNode.getChildren %}
+            {% set index = index+1 %}
+            {% if primaryNav.enabled %}
+            {% if primaryNav.getChildCount and numberOfLevels > 1 %}
+            <li class="site-map__parent-item">
+                <div class="site-map__parent-item-content">
+                    <div class="site-map__link-block">
+                        <a class="site-map__parent-item-link" href="{{ primaryNav.getLinkHref }}" target="{{ primaryNav.getLinkTarget }}">{{
+                            primaryNav.title }}</a>
+                    </div>
+                {% else %}
+            <li class="site-map__parent-item">
+                <div class="site-map__parent-item-content">
+                    <div class="site-map__link-block">
+                        <a class="site-map__parent-item-link" href="{{ primaryNav.getLinkHref }}" target="{{ primaryNav.getLinkTarget }}">{{
+                            primaryNav.title }}</a>
+                    </div>
+                {% endif %}
+                {% if primaryNav.getChildCount and numberOfLevels > 1 %}
+                <ul class="site-map__child-item">
+                    {% for secondaryNav in primaryNav.getChildren %}
+                    {% if secondaryNav.enabled %}
+                    <li class="">
+                        <a class="" href="{{ secondaryNav.getLinkHref }}" target="{{ secondaryNav.getLinkTarget }}">{{
+                            secondaryNav.title }}{% if secondaryNav.getChildCount and numberOfLevels > 2 %}{% endif
+                            %}</a>
+                        {% if secondaryNav.getChildCount and numberOfLevels > 2 %}
+                        <ul class="site-map__child-item">
+                            {% for tertiaryNav in secondaryNav.getChildren %}
+                            {% if tertiaryNav.enabled %}
+                            <li>
+                                <a class="" href="{{ tertiaryNav.getLinkHref }}"
+                                   target="{{ tertiaryNav.getLinkTarget }}">{{ tertiaryNav.title }}</a>
+                            </li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                </div>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+</div>

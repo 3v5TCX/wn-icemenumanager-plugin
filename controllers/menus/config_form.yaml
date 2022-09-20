@@ -1,0 +1,35 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Menus
+
+# Model Form Field configuration
+form: plugins/icecollection/menumanager/models/menu/fields.yaml
+
+# Model Class name
+modelClass: IceCollection\MenuManager\Models\Menu
+
+# Default redirect location
+defaultRedirect: icecollection/menumanager/menus
+
+# Create page
+create:
+    title: Создание пункта меню
+    redirect: icecollection/menumanager/menus/update/:id
+    redirectClose: icecollection/menumanager/menus
+    flash-save: Меню создано
+
+# Update page
+update:
+    title: Редактирование пункта меню
+    redirect: icecollection/menumanager/menus
+    redirectClose: icecollection/menumanager/menus
+    flash-save: Меню обновлено
+    flash-delete: Меню удалено
+
+# Preview page
+preview:
+    title: Предпросмотр меню
+

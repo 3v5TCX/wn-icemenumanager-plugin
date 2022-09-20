@@ -1,0 +1,24 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+  title:
+    label: Название
+    searchable: true
+  enabled:
+    label: Использовать
+    type: switch
+  url:
+    label: Ссылка
+    searchable: true
+    options: getUrlOptions
+  parameters:
+    label: Параметры
+    searchable: true
+  query_string:
+    label: Строка запроса
+    searchable: true
+  description:
+    label: Описание
+    searchable: true

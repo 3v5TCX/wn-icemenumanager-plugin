@@ -1,0 +1,17 @@
+{% if parentNode and parentNode.getChildCount %}
+    {% for primaryNav in parentNode.getChildren %}
+        {% if primaryNav.enabled %}
+            {% if primaryNav.getChildCount and numberOfLevels > 1 %}
+                <h4 class="menu-title">
+                    <a href="{{ primaryNav.getLinkHref }}" target="{{ primaryNav.getLinkTarget }}">{{ primaryNav.title }}</a>
+            {% else %}
+                <h4 class="menu-title">
+                    <a href="{{ primaryNav.getLinkHref }}" target="{{ primaryNav.getLinkTarget }}">{{ primaryNav.title }}</a>
+            {% endif %}
+                </h4>
+            {% if primaryNav.description %}
+                <p class="menu-description">{{ primaryNav.description }}</p>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{% endif %}

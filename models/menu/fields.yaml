@@ -1,0 +1,64 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    title:
+        label: Название
+        span: left
+    description:
+        label: Описание (необязательно)
+        type: textarea
+        size: small
+        span: right
+    enabled:
+        label: Включить / выключить эту ссылку
+        type: radio
+        options:
+            0: Выключить
+            1: Включить
+        default: 1
+        span: left
+    is_external:
+        label: Тип меню
+        type: dropdown
+        placeholder: -- Выбрать тип меню --
+        options:
+            0: Внутреннее
+            1: Внешнее
+        default: 0
+        cssClass: menumanager-type-controller
+        span: left
+    internal_url:
+        label: Ссылка на страницу
+        type: dropdown
+        placeholder: -- Выбрать файл --
+        options: getUrlOptions
+        cssClass: menumanager-type type-0
+        span: right
+    external_url:
+        label: Ссылка на сторонний ресурс
+        placeholder: Type external url
+        cssClass: menumanager-type type-1
+        comment: например http://example.com
+        span: right
+    link_target:
+        label: Открыть ссылку 
+        type: radio
+        options:
+            _self: в той же вкладке
+            _blank: в новом окне
+        default: _self
+    parameters:
+        label: Дополнительные параметры URL (JSON), например, если URL использует "/:slug"
+        commentAbove: "{ \"slug\" : \"my-page-slug\" }"
+        type: text
+        size: tiny
+    query_string:
+        label: Дополнительные параметры строки запроса (они будут автоматически скрываться)
+        commentAbove: например "param1=foo&param2=http://www.google.com"
+        type: text
+        size: tiny
+    url:
+        label: URL
+        cssClass: hidden

@@ -1,0 +1,47 @@
+{% if parentNode and parentNode.getChildCount %}
+{% if position==1 %}
+<div class="lower-header">
+    <div class="container">
+        <div class="menu-button mobile-menu">
+            <div>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <span>Меню</span>
+        </div>
+        <ul class="navigation main-menu">
+            {% set index = 0 %}
+            {% for primaryNav in parentNode.getChildren %}
+            {% set index = index+1 %}
+            {% if primaryNav.enabled %}
+            {% if primaryNav.getChildCount and numberOfLevels > 1 %}
+            <li class="main-menu__section{% if index == 1 %} special-section-mainnav main-menu__special-section{% endif %}">
+                <a class="main-menu__item main-menu__item--with-arrow" href="{{ primaryNav.getLinkHref }}" target="{{ primaryNav.getLinkTarget }}">
+                    {{ primaryNav.title }}
+                </a>
+                {% else %}
+            <li class="main-menu__section">
+                <a class="main-menu__item" href="{{ primaryNav.getLinkHref }}" target="{{ primaryNav.getLinkTarget }}">
+                    {{ primaryNav.title }}</a>
+                {% endif %}
+                {% if primaryNav.getChildCount and numberOfLevels > 1 %}
+                <ul class="main-menu__sub-menu">
+                    {% for secondaryNav in primaryNav.getChildren %}
+                    {% if secondaryNav.enabled %}
+                    <li class="main-menu__sub-menu-section">
+                        <a class="main-menu__sub-menu-item" href="{{ secondaryNav.getLinkHref }}"
+                           target="{{ secondaryNav.getLinkTarget }}">{{ secondaryNav.title }}</a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endif %}
+{% endif %}
