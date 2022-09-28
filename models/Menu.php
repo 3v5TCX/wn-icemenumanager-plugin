@@ -167,29 +167,9 @@ class Menu extends Model {
      */
     public function getLinkHref($routePersistence = true)
     {
-        $this->controller = new BaseController;
 
-        $url = '#';
+        return $this->url;
 
-        $parameters = (array)json_decode($this->parameters);
-
-        if ($this->url)
-        {
-            if (!$this->is_external)
-            {
-                $url = $this->controller->pageUrl($this->url, $parameters, $routePersistence);
-            } else
-            {
-                $url = $this->url;
-            }
-        }
-
-        if (!empty($this->query_string))
-        {
-            $url .= '?' . $this->createQueryString($this->query_string);
-        }
-
-        return $url;
     }
 
     /**
